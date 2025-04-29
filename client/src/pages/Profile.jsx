@@ -104,6 +104,13 @@ function Profile() {
       <BallLoader />
     </div>)
   }
+  if (isCheckingAuth) {
+    return(<div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
+      'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745681240/bgdoolde_m0dfxy.png)]' : 'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745680945/bgdooldewhite_eapomc.png)]'
+      }`}>
+      <BallLoader />
+    </div>)
+  }
   return (
     <div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
       'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745681240/bgdoolde_m0dfxy.png)]' : 'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745680945/bgdooldewhite_eapomc.png)]'
