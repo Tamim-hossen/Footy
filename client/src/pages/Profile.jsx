@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useAuthStore } from '../store/useAuthStore.js'
 import { useNavigate } from 'react-router-dom'
 import { useThemeStore } from '../store/useThemeStore.js'
-import { User, Pen, Mail, Phone, PenLine, Lock, Eye, EyeClosed,Loader2 } from 'lucide-react'
+import { User, Pen, Mail, Phone, PenLine, Lock, Eye, EyeClosed, Loader2 } from 'lucide-react'
 import BallLoader from '../components/skeleton/BallLoader.jsx'
 import toast from 'react-hot-toast'
 function Profile() {
   const { theme } = useThemeStore()
-  const { authUser, isCheckingAuth, passwordChange,changeProfileInfo,isChangingPassword,isUpdatingProfile } = useAuthStore()
+  const { authUser, isCheckingAuth, passwordChange, changeProfileInfo, isChangingPassword, isUpdatingProfile } = useAuthStore()
   const nav = useNavigate()
   const [user, setUser] = useState({ name: '', email: '', phone: '', currentPassword: '' });
   const [changeEdited, setChangeEdited] = useState(false)
@@ -33,7 +33,7 @@ function Profile() {
   useEffect(() => {
 
     if (!authUser) {
-      scrollTo({ top: 0 })
+      scrollTo({ top: 0, behavior: 'smooth' })
       nav('/')
     }
     else {
@@ -52,14 +52,14 @@ function Profile() {
       phoneInpurRef.current?.focus();
     }
   }, [editable]);
-  const handleProfileEdit = async()=>{
-    if(user.currentPassword.length < 6){
+  const handleProfileEdit = async () => {
+    if (user.currentPassword.length < 6) {
       toast.error('Passwords Must be at least 6 characters long!!')
     }
-    else{
+    else {
       try {
         const response = await changeProfileInfo(user)
-        if(response === 200){
+        if (response === 200) {
           setChangeEdited(false)
           setUser({ ...user, currentPassword: '' })
         }
@@ -98,14 +98,14 @@ function Profile() {
     }
   }
   if (isCheckingAuth) {
-    return(<div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
+    return (<div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
       'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745681240/bgdoolde_m0dfxy.png)]' : 'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745680945/bgdooldewhite_eapomc.png)]'
       }`}>
       <BallLoader />
     </div>)
   }
   if (isCheckingAuth) {
-    return(<div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
+    return (<div className={`flex flex-col items-center justify-center gap-10 w-full relative h-fixed ${theme === 'light' ?
       'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745681240/bgdoolde_m0dfxy.png)]' : 'bg-[url(https://res.cloudinary.com/ddvwykjjv/image/upload/v1745680945/bgdooldewhite_eapomc.png)]'
       }`}>
       <BallLoader />
@@ -143,9 +143,22 @@ function Profile() {
               </p>
             </div>
           </div>
-          <div className='flex justify-center mb-5'><p className='text-lg font-bold'>Account Status: <label className={`${authUser.status === 'active' ? 'text-green-600' :'text-red-600'} animate-pulse`}>{authUser.status === 'active' ? 'Active':'Suspended'}</label></p></div>
+          {authUser && (
+            <div className='flex justify-center mb-5'>
+              <p className='text-lg font-bold'>
+                Account Status:{' '}
+                <label
+                  className={`${authUser.status === 'active' ? 'text-green-600' : 'text-red-600'
+                    } animate-pulse`}
+                >
+                  {authUser.status === 'active' ? 'Active' : 'Suspended'}
+                </label>
+              </p>
+            </div>
+          )}
+
           {/*Name */}
-          <div className='flex flex-col justify-center items-center mb-5'>
+          {authUser && (<div className='flex flex-col justify-center items-center mb-5'>
             <p className='text-xl font-bold'>Name</p>
             <div className={`w-[75%] lg:w-[60%] relative transition-all ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -167,9 +180,9 @@ function Profile() {
                 {editable === 'name' ? <PenLine className=' h-5 w-5' /> : <Pen className=' h-5 w-5' />}
               </div>
             </div>
-          </div>
+          </div>)}
           {/*Email */}
-          <div className='flex flex-col justify-center items-center mb-5'>
+          {authUser && (<div className='flex flex-col justify-center items-center mb-5'>
             <p className='text-xl font-bold'>Email</p>
             <div className={`w-[75%] lg:w-[60%] relative transition-all ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -191,9 +204,9 @@ function Profile() {
                 {editable === 'email' ? <PenLine className=' h-5 w-5' /> : <Pen className=' h-5 w-5' />}
               </div>
             </div>
-          </div>
+          </div>)}
           {/*Phone */}
-          <div className='flex flex-col justify-center items-center mb-5'>
+          {authUser && (<div className='flex flex-col justify-center items-center mb-5'>
             <p className='text-xl font-bold'>Phone Number</p>
             <div className={`w-[75%] lg:w-[60%] relative transition-all ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -215,12 +228,12 @@ function Profile() {
                 {editable === 'phone' ? <PenLine className=' h-5 w-5' /> : <Pen className=' h-5 w-5' />}
               </div>
             </div>
-          </div>
+          </div>)}
           <div className='flex items-center justify-center mb-5'><button className='btn bg-green-200 text-gray-900' onClick={() => { setChangePassword(true) }}>Change Password</button></div>
-          <div className={`mb-20 flex flex-row justify-center items-center gap-30 ${user.name !== authUser.name ? 'scale-100' :
-             user.email !== authUser.email ? 'scale-100' : user.phone !== authUser.phone ? 'scale-100':'scale-0'} transition-all duration-700`}>
-            <button className='btn bg-green-300 text-black' onClick={()=>{setChangeEdited(true)}}>Save</button>
-            <button className='btn bg-red-300 text-black' onClick={()=>{setUser({...user, name:authUser.name,email:authUser.email,phone:authUser.phone});setEditable('')}}>Cancel</button>
+          <div className={`mb-20 flex flex-row justify-center items-center gap-30 ${user?.name !== authUser?.name ? 'scale-100' :
+            user?.email !== authUser?.email ? 'scale-100' : user?.phone !== authUser?.phone ? 'scale-100' : 'scale-0'} transition-all duration-700`}>
+            <button className='btn bg-green-300 text-black' onClick={() => { setChangeEdited(true) }}>Save</button>
+            <button className='btn bg-red-300 text-black' onClick={() => { setUser({ ...user, name: authUser.name, email: authUser.email, phone: authUser.phone }); setEditable('') }}>Cancel</button>
           </div>
         </div>
       </div>
@@ -287,9 +300,9 @@ function Profile() {
               </div>
             </div>
           </div>
-          {isChangingPassword ?<div>
-            <button className='btn bg-green-300 text-black w-26'><Loader2 className='animate-spin'/></button>
-          </div> :<div>
+          {isChangingPassword ? <div>
+            <button className='btn bg-green-300 text-black w-26'><Loader2 className='animate-spin' /></button>
+          </div> : <div>
             <button className='btn bg-green-300 text-black' onClick={handlePasswordChange}>Submit</button>
           </div>}
         </div>
@@ -318,13 +331,13 @@ function Profile() {
               </div>
             </div>
           </div>
-          {isUpdatingProfile ? <div><button className='btn bg-green-300 text-black w-50'><Loader2 className='animate-spin'/></button></div>:
-          <div className='flex flex-row gap-10'>
-            <button className='btn bg-green-300 text-black' onClick={handleProfileEdit}>Submit</button>
-            <button className='btn bg-red-300 text-black' onClick={() => {setChangeEdited(false);setShowPass((prev) => !prev)}}>Cancel</button>
-          </div> }
+          {isUpdatingProfile ? <div><button className='btn bg-green-300 text-black w-50'><Loader2 className='animate-spin' /></button></div> :
+            <div className='flex flex-row gap-10'>
+              <button className='btn bg-green-300 text-black' onClick={handleProfileEdit}>Submit</button>
+              <button className='btn bg-red-300 text-black' onClick={() => { setChangeEdited(false); setShowPass((prev) => !prev) }}>Cancel</button>
+            </div>}
         </div>
-        <div className='absolute w-screen h-screen z-15 bg-[#0000009f]'  />
+        <div className='absolute w-screen h-screen z-15 bg-[#0000009f]' />
       </div>
     </div>
   )

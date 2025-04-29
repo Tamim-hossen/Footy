@@ -30,9 +30,14 @@ function Navbar() {
     return (
         <div className='fixed z-50 h-screen'>
             <div className={` flex flex-col relative h-full ${extended ? 'w-60 bg-base-300 shadow-2xl' : 'w-14 '} transition-all z-50`}>
-                <button  className='p-8 '>
+                <div className='flex p-8 flex-row justify-between'>
+                <button  className=''>
                     <TableOfContents onClick={() => setExtended((prev) => !prev)} className='cursor-pointer text-accent bg-[rgba(0,0,0,0.5)] p-2 h-10 w-10 rounded-md' />
                 </button>
+                <div className={`${extended ? "translate-x-0" : "-translate-x-32"}   transition-all flex flex-col gap-2`}>
+                <button className={`p-4 flex flex-row cursor-pointer hover:scale-[1.02]`} title={authUser? 'Log Out' : 'Log In'} onClick={loginButtonHandle}><LogOut /></button>
+                </div>
+                </div>
                 <div className={`flex flex-col h-full justify-between my-3 p-3`}>
                     <div className={`${extended ? "translate-x-0" : "-translate-x-32"}   transition-all flex flex-col gap-2`}>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => { nav('/'); setExtended(false);scrollTo({top:0,behavior:'smooth'}) }}><House />Home</button>
@@ -40,11 +45,7 @@ function Navbar() {
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/matches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Calendar />Matches</button>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/pitches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Flag />View Pitches</button>
                         { isAdmin && <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/admin'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><ShieldUser />Admin Panel</button>}
-                        {/* <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings />Settings</button> */}
-                    </div>
-                    <div className={`${extended ? "translate-x-0" : "-translate-x-32"}  transition-all flex flex-row justify-between`}>
-                        <button className={`p-4 flex flex-row cursor-pointer hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings /></button>
-                        <button className={`p-4 flex flex-row cursor-pointer hover:scale-[1.02]`} title={authUser? 'Log Out' : 'Log In'} onClick={loginButtonHandle}><LogOut /></button>
+                        <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings />Settings</button>
                     </div>
                 </div>
             </div>
