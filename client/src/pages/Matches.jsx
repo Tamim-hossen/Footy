@@ -59,7 +59,7 @@ function Matches() {
       </div>
       <div className='flex flex-col justify-center items-center w-[90%] mb-20'>
         <p className='text-5xl font-bold mt-20'>Matches</p>
-        <div className='mt-10 w-full bg-[#75757581] rounded-xl'>
+        <div className='mt-10 w-full bg-[#75757581] rounded-xl flex flex-col justify-center items-center'>
           <div className='relative rounded-2xl m-5 mb-25'>
             <img
               src={images[bg]}
@@ -80,20 +80,20 @@ function Matches() {
               <p className='text-md flex flex-row gap-2 justify-center items-center'><Phone/>{phone}</p>
             </div>
           </div>
-          <div className='flex flex-col justify-center items-center'>
+          <div className='flex flex-col justify-center items-center w-[90%]'>
             {bookingInfo.map((booking)=>{
                             const date = new Date(booking.placedOn).toLocaleDateString('en-CA')
                             const time = new Date(booking.placedOn).toLocaleTimeString('en-US')
                               return (
-                                <div className='p-4 bg-base-200 flex flex-col items-center justify-center rounded-xl border-1 shadow-black shadow-md m-2 mb-5 w-[24rem] sm:w-[30rem] lg:w-[40rem]' >
+                                <div className='p-4 bg-base-200 flex flex-col items-center justify-center rounded-xl border-1 shadow-black shadow-md m-2 mb-5 w-[90%]' >
                                   <div className='flex flex-col justify-center items-center gap-2 w-full'>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><Calendar size={18}/>Date: {booking.date}</p>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><Calendar size={18}/>Slot: {booking.slotName}</p>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><Clock size={18}/>Time: {booking.slot}</p>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><Volleyball size={18}/>Pitch: {booking.turf === 'xtraTime' ? 'Xtra Time':'Sky Turf'}</p>
-                                    <p className='font-bold flex flex-row gap-2 items-center text-lg p-1 w-[70%]  transition-all pl-10'>Booked On:</p>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><CalendarCheck size={18}/>Date: {date}</p>
-                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[70%] border-b-1 transition-all pl-10'><Clock size={18}/>Time: {time}</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><Calendar size={18}/>Date: {booking.date}</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><Calendar size={18}/>Slot: {booking.slotName}</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><Clock size={18}/>Time: {booking.slot}</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><Volleyball size={18}/>Pitch: {booking.turf === 'xtraTime' ? 'Xtra Time':'Sky Turf'}</p>
+                                    <p className='font-bold flex flex-row gap-2 items-center text-lg p-1 w-[80%] transition-all pl-10'>Booked On:</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><CalendarCheck size={18}/>Date: {date}</p>
+                                    <p className='flex flex-row gap-2 items-center text-lg p-1 w-[80%] border-b-1 transition-all pl-10'><Clock size={18}/>Time: {time}</p>
                                     <div>
                                       <div>
                                       </div>

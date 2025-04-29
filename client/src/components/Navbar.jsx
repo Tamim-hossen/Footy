@@ -29,7 +29,7 @@ function Navbar() {
     }
     return (
         <div className='fixed z-50'>
-            <div className={` flex flex-col relative h-screen ${extended ? 'w-60 bg-base-300 shadow-2xl' : 'w-14 '} transition-all z-50`}>
+            <div className={` flex flex-col fixed h-screen ${extended ? 'w-60 bg-base-300 shadow-2xl' : 'w-14 '} transition-all z-50`}>
                 <button  className='p-8 '>
                     <TableOfContents onClick={() => setExtended((prev) => !prev)} className='cursor-pointer text-accent bg-[rgba(0,0,0,0.5)] p-2 h-10 w-10 rounded-md' />
                 </button>
@@ -40,6 +40,7 @@ function Navbar() {
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/matches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Calendar />Matches</button>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/pitches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Flag />View Pitches</button>
                         { isAdmin && <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/admin'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><ShieldUser />Admin Panel</button>}
+                        {/* <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings />Settings</button> */}
                     </div>
                     <div className={`${extended ? "translate-x-0" : "-translate-x-32"}  transition-all flex flex-row justify-between`}>
                         <button className={`p-4 flex flex-row cursor-pointer hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings /></button>

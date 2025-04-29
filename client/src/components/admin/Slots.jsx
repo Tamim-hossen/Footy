@@ -9,10 +9,10 @@ const [selectedTurf,setSelectedTurf] = useState('skyTurf')
       <div className='w-full max-w-5xl px-4 h-full flex flex-row justify-center items-start gap-5 '>
        <div className='w-[100%] flex flex-col max-w-full relative justify-center items-center'>
        <div className='flex flex-row w-[90%] items-end  justify-center mb-5 bg-base-100 rounded-lg shadow-lg shadow-black mt-5'>
-          <div className='flex flex-row  relative gap-8 z-10 '>
-          <p className={` p-3 w-25  overflow-hidden cursor-pointer text-end`} onClick={()=>{setSelectedTurf('skyTurf')}}>Sky Turf</p>
-          <p className={` p-3 w-25   overflow-hidden cursor-pointer text-end `} onClick={()=>{setSelectedTurf('xtraTime')}}>Xtra Time</p>
-          <p className={`bg-[rgba(0,0,0,0.25)] w-30 h-12 absolute rounded-lg ${selectedTurf === 'xtraTime' ? 'left-32':'left-0'} -z-10 transition-all`}/>
+          <div className='flex flex-row  relative justify-between z-10 '>
+          <p className={`py-3 w-25  text-center overflow-hidden cursor-pointer `} onClick={()=>{setSelectedTurf('skyTurf')}}>Sky Turf</p>
+          <p className={` py-3 w-25  overflow-hidden cursor-pointer text-center `} onClick={()=>{setSelectedTurf('xtraTime')}}>Xtra Time</p>
+          <p className={`bg-[rgba(0,0,0,0.25)] w-25 h-12 absolute rounded-lg ${selectedTurf === 'xtraTime' ? 'left-25':'left-0'} -z-10 transition-all`}/>
           </div>
         </div>
         <div>
