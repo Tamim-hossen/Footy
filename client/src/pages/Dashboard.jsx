@@ -43,7 +43,7 @@ function SkyTurf() {
           <p className='text-5xl overflow-hidden font-bold mt-5 h-20 gradient-animate bg-clip-text pt-2  transition-all '>
             Admin Panel
           </p>
-          <div className='flex flex-row  text-xl w-[70%] items-center justify-center rounded-lg  relative bg-base-100 shadow-lg shadow-black'>
+          <div className='flex flex-row  text-xl w-[90%] items-center justify-center rounded-lg  relative bg-base-100 shadow-lg shadow-black'>
             <div className='flex flex-row  items-center justify-center relative z-10'>
               <p className={` p-2 cursor-pointer w-30 text-center px-5 `} onClick={() => setSelected('slots')}>Slots</p>
               <p className={` p-2 cursor-pointer w-30 text-center px-5 `} onClick={() => setSelected('users')}>Users</p>

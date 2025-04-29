@@ -73,7 +73,7 @@ function Matches() {
             </div>
             
           </div>
-          <div className='flex flex-col justify-center items-center'>
+          <div className='flex flex-col justify-center items-center mb-10'>
             <p className='text-3xl font-bold'>{authUser?.name}</p>
             <div className='flex flex-col gap-2 text-lg justify-center items-center'>
               <p className='text-md flex flex-row gap-2 justify-center items-center'><Mail/>{authUser?.email}</p>
