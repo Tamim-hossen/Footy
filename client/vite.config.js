@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server:{
     host:true,
+    allowedHosts: 'all',
     port:5173,
     watch:{
       usePolling:true,
