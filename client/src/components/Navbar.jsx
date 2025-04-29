@@ -28,12 +28,12 @@ function Navbar() {
         } 
     }
     return (
-        <div className='fixed z-50'>
-            <div className={` flex flex-col fixed h-screen ${extended ? 'w-60 bg-base-300 shadow-2xl' : 'w-14 '} transition-all z-50`}>
+        <div className='fixed z-50 h-screen'>
+            <div className={` flex flex-col relative h-full ${extended ? 'w-60 bg-base-300 shadow-2xl' : 'w-14 '} transition-all z-50`}>
                 <button  className='p-8 '>
                     <TableOfContents onClick={() => setExtended((prev) => !prev)} className='cursor-pointer text-accent bg-[rgba(0,0,0,0.5)] p-2 h-10 w-10 rounded-md' />
                 </button>
-                <div className={`flex flex-col h-screen justify-between my-3 p-3`}>
+                <div className={`flex flex-col h-full justify-between my-3 p-3`}>
                     <div className={`${extended ? "translate-x-0" : "-translate-x-32"}   transition-all flex flex-col gap-2`}>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => { nav('/'); setExtended(false);scrollTo({top:0,behavior:'smooth'}) }}><House />Home</button>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/profile'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><CircleUser />User Profile</button>
