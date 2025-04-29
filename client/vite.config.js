@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server:{
     host:true,
-    allowedHosts: 'all',
+    allowedHosts: ['footy.up.railway.app'],
     port:5173,
     watch:{
       usePolling:true,
