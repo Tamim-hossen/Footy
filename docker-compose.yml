@@ -1,0 +1,50 @@
+
+services:
+  mongo:
+    image: mongo:7.0.12
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - booking_app
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    restart: unless-stopped
+    ports:
+      - 5001:5001
+    networks:
+      - booking_app
+    env_file:
+      - ./server/.env
+    command: npm run dev
+    depends_on:
+      - mongo
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    restart: unless-stopped
+    ports:
+      - 5173:5173
+    networks:
+      - booking_app
+    env_file:
+      - ./client/.env
+    command: npm run dev -- --host
+    depends_on:
+      - backend
+networks:
+  booking_app:
+    driver: bridge
+
+volumes:
+  mongo_data:

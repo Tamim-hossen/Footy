@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@plugin 'daisyui'{
+  themes: light,dark, caramellatte,forest,coffee
+}
+
+@keyframes animate-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: animate-gradient 1s ease-in infinite;
+}
+.custom-shape-divider-top-1745658344 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1745658344 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1745658344 .shape-fill {
+  fill: #FFFFFF;
+}
+
+.custom-shape-divider-bottom-1745687357 {
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1745687357 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+.custom-shape-divider-bottom-1745687357 .shape-fill {
+    fill: #FFFFFF;
+}
+.op50 {
+  background: #11d3b3af
+}
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
