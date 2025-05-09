@@ -20,17 +20,6 @@ function Pitches() {
     'https://res.cloudinary.com/ddvwykjjv/image/upload/v1745769604/patternpad-2025-04-27-21-59-01_zxklkz.svg',
     'https://res.cloudinary.com/ddvwykjjv/image/upload/v1745769604/patternpad-2025-04-27-21-58-03_kofuex.svg']
 
-  useEffect(() => {
-    getBookingInfo()
-    if (!authUser) {
-      scrollTo({ top: 0, behavior: 'smooth' })
-      nav('/')
-    }
-    else {
-      setUser({ name: authUser.name, email: authUser.email, phone: authUser.phone });
-      setBg(Math.floor(Math.random() * images.length))
-    }
-  }, [])
 
 
   if (isGettingBookingInfo) {

@@ -41,8 +41,8 @@ function Navbar() {
                 <div className={`flex flex-col h-full justify-between my-3 p-3`}>
                     <div className={`${extended ? "translate-x-0" : "-translate-x-32"}   transition-all flex flex-col gap-2`}>
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => { nav('/'); setExtended(false);scrollTo({top:0,behavior:'smooth'}) }}><House />Home</button>
-                        <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/profile'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><CircleUser />User Profile</button>
-                        <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/matches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Calendar />Matches</button>
+                        {authUser && <p><button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/profile'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><CircleUser />User Profile</button>
+                        <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/matches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Calendar />Matches</button></p>}
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/pitches'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Flag />View Pitches</button>
                         { isAdmin && <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/admin'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><ShieldUser />Admin Panel</button>}
                         <button className={`p-4 flex  flex-row gap-5 cursor-pointer w-full hover:scale-[1.02]`} onClick={() => {nav('/settings'); setExtended(false);scrollTo({top:0,behavior:'smooth'})}}><Settings />Settings</button>
