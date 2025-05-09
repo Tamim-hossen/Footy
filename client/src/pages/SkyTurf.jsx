@@ -283,12 +283,17 @@ function SkyTurf() {
                 ))}
               </div>
             </div>
-            <button className={`mb-20 p-2 px-6 flex flex-row gap-2 items-center rounded-lg shadow-lg shadow-black  
+           {authUser ?  <button className={`mb-20 p-2 px-6 flex flex-row gap-2 items-center rounded-lg shadow-lg shadow-black  
                                 ${selected ? 'bg-green-300 text-black btn btn-md cursor-pointer' :
                 ' bg-gray-500 cursor-not-allowed'}`}
               onClick={handleCart}
             >
-              Continue<ArrowRight size={18} className='animate-pulse' /></button>
+              Continue<ArrowRight size={18} className='animate-pulse' /></button> :
+               <button className={`mb-20 p-2 px-6 flex flex-row gap-2 items-center rounded-lg shadow-lg shadow-black
+                ' bg-gray-500 cursor-not-allowed`}
+              onClick={()=>{toast.error('Please Log In')}}
+            >
+              Continue<ArrowRight size={18} className='animate-pulse' /></button>}
           </div>
         </div>
         <div className={`fixed top-0 left-0 z-100 ${cartAdded ? 'scale-100' : 'scale-0'} transition-all w-screen h-screen flex items-center justify-center`}>
